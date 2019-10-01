@@ -2,6 +2,8 @@
 
 const form = document.getElementById('request-quote');
 const level = document.querySelector('input[name="level"]:checked').value;
+const spinner = document.querySelector('#loading img');
+const prevResult = document.querySelector('#result div');
 EventListerners();
 
 function EventListerners() {
@@ -29,7 +31,7 @@ function EventListerners() {
             const insurance = new Insurance(make, year, level);
             const price = insurance.calculateQuotation(insurance);
 
-            const prevResult = document.querySelector('$result div');
+
             if (prevResult != null) {
                 prevResult.remove();
             }
@@ -158,13 +160,14 @@ HTMLUI.prototype.showResults = function (price, insurance) {
     <P>Level:${insurance.level}    
     <p class="Total">Total:$ ${price}</p>`
 
-    const spinner = document.querySelector('#loading img');
 
     console.log(spinner);
-    // spinner.style.display = 'block';
-    // setTimeout(() => {
-    //     result.appendChild(div);
-    // }, 3000);
+    // console.log(spinner);
+    spinner.style.display = 'block';
+    setTimeout(() => {
+        result.appendChild(div);
+        spinner.style.display = 'none';
+    }, 3000);
 
 
 }
