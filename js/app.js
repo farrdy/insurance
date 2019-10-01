@@ -29,6 +29,11 @@ function EventListerners() {
             const insurance = new Insurance(make, year, level);
             const price = insurance.calculateQuotation(insurance);
 
+            const prevResult = document.querySelector('$result div');
+            if (prevResult != null) {
+                prevResult.remove();
+            }
+
             html.showResults(price, insurance);
             //make the qoautation
         }
@@ -143,6 +148,8 @@ HTMLUI.prototype.showResults = function (price, insurance) {
             make = 'European';
             break;
     }
+
+
     const div = document.createElement('div');
     div.innerHTML = `
     <p class="header">Summary<p>
@@ -150,6 +157,15 @@ HTMLUI.prototype.showResults = function (price, insurance) {
     <p>Year:${insurance.year}
     <P>Level:${insurance.level}    
     <p class="Total">Total:$ ${price}</p>`
-    result.appendChild(div);
+
+    const spinner = document.querySelector('#loading img');
+
+    console.log(spinner);
+    // spinner.style.display = 'block';
+    // setTimeout(() => {
+    //     result.appendChild(div);
+    // }, 3000);
+
+
 }
 
