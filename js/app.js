@@ -3,7 +3,7 @@
 const form = document.getElementById('request-quote');
 const level = document.querySelector('input[name="level"]:checked').value;
 const spinner = document.querySelector('#loading img');
-const prevResult = document.querySelector('#result div');
+
 EventListerners();
 
 function EventListerners() {
@@ -30,8 +30,7 @@ function EventListerners() {
 
             const insurance = new Insurance(make, year, level);
             const price = insurance.calculateQuotation(insurance);
-
-
+            const prevResult = document.querySelector('#result div');
             if (prevResult != null) {
                 prevResult.remove();
             }
